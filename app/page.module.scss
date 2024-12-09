@@ -1,0 +1,55 @@
+@use "./mixins.scss" as *;
+
+.card_list {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(1, 226px);
+  gap: 2.4rem;
+  list-style: none;
+  padding-left: 0;
+
+  max-width: 650px;
+  width: 100%;
+  & .card_item {
+    width: 226px;
+    border-radius: 12px;
+    padding: 1.5rem;
+    background-color: #2b2e33;
+
+    & .card_item_price_box {
+      display: flex;
+      align-items: center;
+    }
+
+    & .card_item_price {
+      font-size: 2.4rem;
+
+      line-height: 115%;
+      color: #bb50df;
+    }
+    & .card_item_title {
+      font-size: 1.4rem;
+    }
+
+    & .card_item_button {
+      color: #65cd53;
+      font-size: 1.6rem;
+      border: 1px solid #65cd53;
+      padding: 1.2rem 0px;
+      width: 100px;
+      border-radius: 8px;
+      margin-right: 11px;
+    }
+
+    & .card_item_quantity {
+      width: 100%;
+      max-width: 27px;
+      padding: 0.8rem;
+      color: #ffffff;
+      text-align: center;
+      background-color: #65cd53;
+      border-radius: 5px;
+    }
+  }
+}
