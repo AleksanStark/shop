@@ -34,7 +34,7 @@ const CartSideBarMobile = () => {
         quantity: item.quantity,
       }));
       const response = await axios.post(
-        "http://localhost:8000/checkout",
+        "https://shop-backend-xsh2.onrender.com/checkout",
         line_items
       );
       return response.data;
