@@ -35,7 +35,12 @@ const CartSideBarMobile = () => {
       }));
       const response = await axios.post(
         "https://shop-backend-xsh2.onrender.com/checkout",
-        line_items
+        line_items,
+        {
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        }
       );
       return response.data;
     } catch (error) {
