@@ -37,7 +37,7 @@ const CartSideBarMobile = () => {
         price: item.price.id,
         quantity: item.quantity,
       }));
-      const response = await axios.post("http//localhost:8000/checkout", {
+      const response = await axios.post("http://localhost:8000/checkout", {
         line_items: line_items,
       });
       console.log(response.data);
