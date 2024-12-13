@@ -5,11 +5,12 @@ import { CartContext } from "./components/CartContext/CartContext";
 import scss from "./page.module.scss";
 import { BiDollar } from "react-icons/bi";
 import clsx from "clsx";
-
+import { useRouter } from "next/navigation";
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY!);
 
 const Home = () => {
   const cartContext = useContext(CartContext);
+  const router = useRouter();
 
   const {
     prices,
@@ -53,7 +54,11 @@ const Home = () => {
                 (item) => item.product.id === product.id
               );
               return (
-                <li className={scss.card_item} key={product.id}>
+                <li
+                  onClick={() => router.push(`/${product.id}`)}
+                  className={scss.card_item}
+                  key={product.id}
+                >
                   <div className={scss.card_item_price_box}>
                     <span className={clsx(scss.card_item_price)}>
                       {price

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next --env NODE_ENV=production build",
     "start": "next start",
     "lint": "next lint"
   },

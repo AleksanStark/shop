@@ -34,14 +34,12 @@ const CartSideBarMobile = () => {
         quantity: item.quantity,
       }));
       const response = await axios.post(
-        "https://shop-backend-xsh2.onrender.com/checkout",
-        line_items,
+        "https://shop-backend-1-2h0q.onrender.com/checkout",
         {
-          headers: {
-            "Content-Type": "text/plain",
-          },
+          line_items: line_items,
         }
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
