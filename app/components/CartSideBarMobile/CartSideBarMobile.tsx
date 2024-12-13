@@ -72,7 +72,7 @@ const CartSideBarMobile = () => {
             onClick={async () => {
               try {
                 const stripe = await loadStripe(
-                  process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!
+                  `${process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}`
                 );
                 const data = await fetchClientSession(); // Ждём завершения fetchClientSession
                 if (data) {
