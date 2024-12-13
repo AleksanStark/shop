@@ -14,6 +14,10 @@ import { FiMinus } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
+const stripePromise = loadStripe(
+  `${process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}`
+);
+
 const CartSideBarMobile = () => {
   const cartContext = useContext(CartContext);
   const router = useRouter();
@@ -33,12 +37,9 @@ const CartSideBarMobile = () => {
         price: item.price.id,
         quantity: item.quantity,
       }));
-      const response = await axios.post(
-        "https://shop-backend-1-2h0q.onrender.com/checkout",
-        {
-          line_items: line_items,
-        }
-      );
+      const response = await axios.post("http//localhost:8000/checkout", {
+        line_items: line_items,
+      });
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -71,10 +72,8 @@ const CartSideBarMobile = () => {
           <button
             onClick={async () => {
               try {
-                const stripe = await loadStripe(
-                  `${process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}`
-                );
                 const data = await fetchClientSession(); // Ждём завершения fetchClientSession
+                const stripe = await stripePromise;
                 if (data) {
                   stripe?.redirectToCheckout({
                     sessionId: data.sessionId,
