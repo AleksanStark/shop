@@ -21,7 +21,8 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "http://localhost:3000",
+            value:
+              "http://localhost:3000, https://shop-seven-liart.vercel.app/",
           }, // replace this your actual origin
           {
             key: "Access-Control-Allow-Methods",
