@@ -37,10 +37,10 @@ const CartSideBarMobile = () => {
         price: item.price.id,
         quantity: item.quantity,
       }));
-      const response = await axios.post("http://localhost:3000/checkout", {
+      const response = await axios.post("http://localhost:3000/api/", {
         line_items: line_items,
       });
-      console.log(response.data);
+
       return response.data;
     } catch (error) {
       console.log(error);
@@ -76,7 +76,7 @@ const CartSideBarMobile = () => {
                 const stripe = await stripePromise;
                 if (data) {
                   stripe?.redirectToCheckout({
-                    sessionId: data.sessionId,
+                    sessionId: JSON.parse(data).id,
                   });
                 } else {
                   console.error(
