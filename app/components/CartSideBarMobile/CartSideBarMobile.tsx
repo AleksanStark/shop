@@ -37,9 +37,14 @@ const CartSideBarMobile = () => {
         price: item.price.id,
         quantity: item.quantity,
       }));
-      const response = await axios.post("http://localhost:3000/api/", {
-        line_items: line_items,
-      });
+      const response = await axios.post(
+        "https://shop-backend-1-2h0q.onrender.com/checkout",
+        {
+          line_items: line_items,
+        }
+      );
+
+      console.log(response.data);
 
       return response.data;
     } catch (error) {
@@ -76,7 +81,7 @@ const CartSideBarMobile = () => {
                 const stripe = await stripePromise;
                 if (data) {
                   stripe?.redirectToCheckout({
-                    sessionId: JSON.parse(data).id,
+                    sessionId: data.sessionId,
                   });
                 } else {
                   console.error(
