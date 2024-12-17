@@ -73,7 +73,8 @@ const Home = () => {
                   <p className={scss.card_item_title}>{product.name}</p>
                   <button
                     className={scss.card_item_button}
-                    onClick={async () => {
+                    onClick={async (event) => {
+                      event.stopPropagation();
                       addToCart(product, price!, 1);
                     }}
                   >
